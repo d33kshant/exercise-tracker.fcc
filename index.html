@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excercise</title>
+</head>
+<body>
+  <form action="/api/users" method="post">
+  <h3>Create a New User</h3>
+  <p><code>POST /api/users</code></p>
+  <input id="uname" type="text" name="username" placeholder="username">
+  <input type="submit" value="Submit">
+</form>
+<form id="exercise-form" method="post">
+  <h3>Add exercises</h3>
+  <p><code>POST /api/users/:_id/exercises</code></p>
+  <input id="uid" type="text" name=":_id" placeholder=":_id">
+  <input id="desc" type="text" name="description"placeholder="description*">
+  <input id="dur" type="text" name="duration" placeholder="duration*(mins.)">
+  <input id="date" type="text" name="date" placeholder="date (yyyy-mm-dd">
+  <input type="submit" value="Submit">
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $('#exercise-form').submit(function() {
+    const id = $('#uid').val()
+    $('#exercise-form').attr('action', `/api/users/${id}/exercises`)
+    return true;
+  });
+</script>
+</body>
+</html>
